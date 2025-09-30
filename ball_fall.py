@@ -10,6 +10,9 @@ class Grass:
 
     def draw(self):
        self.image.draw(400, 30)
+
+    def update(self):
+        pass
     
 
 
@@ -54,10 +57,15 @@ def reset_world():
 
 
 def update_world():
-    pass
+    for obj in world:
+        obj.update()
+
+        
 def render_world():
     clear_canvas()
 
+    for obj in world:
+        obj.draw()
 
     update_canvas()
 
