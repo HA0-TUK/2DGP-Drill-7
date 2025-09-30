@@ -4,11 +4,27 @@ import random
 
 # Game object class here
 class Grass:
-    pass    
+    def __init__(self):
+        self.image = load_image('grass.png')
+    
+
+    def draw(self):
+       self.image.draw(400, 30)
+    
 
 
 class Boy:
-    pass
+    def __init__(self):
+        self.image = load_image('run_animation.png')
+        self.x, self.y = random.randint(100, 700), 90
+        self.frame = random.randint(0, 7)
+
+    def draw(self):
+        self.image.clip_draw(self.frame*100, 0, 100, 100, self.x, self.y)
+
+    def update(self):
+        self.x += 5
+        self.frame = (self.frame + 1) % 8
 
 
 class Ball:
