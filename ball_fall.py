@@ -31,6 +31,12 @@ class Boy:
 
 
 class Ball:
+    # 위치: x랜덤 y 599
+    # 속도 랜덤 등속운동
+    # grass에 닿으면 멈춤 if 숫자가 짝수/홀수 로 멈추는 지점 결정
+    # 사이즈 2개중 랜덤 (랜덤 숫자가 짝수 = 21 홀수 = 41)
+
+
     pass
 
 def handle_events():
@@ -55,6 +61,8 @@ def reset_world():
     characters = [Boy() for i in range(10)]
     world += characters
 
+    balls = [Ball() for i in range(20)]
+    world += balls
 
 def update_world():
     for obj in world:
