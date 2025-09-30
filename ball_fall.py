@@ -31,10 +31,27 @@ class Boy:
 
 
 class Ball:
-    # 위치: x랜덤 y 599
+    # 위치: x랜덤 y 599 
     # 속도 랜덤 등속운동
-    # grass에 닿으면 멈춤 if 숫자가 짝수/홀수 로 멈추는 지점 결정
-    # 사이즈 2개중 랜덤 (랜덤 숫자가 짝수 = 21 홀수 = 41)
+    # grass에 닿으면 멈춤 if 숫자가 0/1 로 멈추는 지점 결정
+    # 사이즈 2개중 랜덤 (랜덤 숫자가 0 = 21 1 = 41)
+    def __init__(self):
+        self.size = random.randint(0,1)
+
+        self.x = random.randint(0, 800)
+        self.y = 599
+
+       
+        if self.size == 0:
+            self.image = load_image('ball21x21.png')
+        else:
+            self.image = load_image('ball41x41.png')
+
+    def draw(self):
+        self.image.draw(self.x, self.y)
+
+    def update(self):
+        pass
 
 
     pass
