@@ -33,28 +33,40 @@ class Boy:
 class Ball:
     # 위치: x랜덤 y 599 
     # 속도 랜덤 등속운동
-    # grass에 닿으면 멈춤 if 숫자가 0/1 로 멈추는 지점 결정
+    # grass에 닿으면 멈춤 
     # 사이즈 2개중 랜덤 (랜덤 숫자가 0 = 21 1 = 41)
     def __init__(self):
         self.size = random.randint(0,1)
 
-        self.x = random.randint(0, 800)
+        self.x = random.randint(0, 800) # 창 너비
         self.y = 599
 
-       
+        self.speed = random.randint(30, 100)
+
+        self.floor = 60
         if self.size == 0:
             self.image = load_image('ball21x21.png')
+
+
         else:
             self.image = load_image('ball41x41.png')
+
 
     def draw(self):
         self.image.draw(self.x, self.y)
 
     def update(self):
-        pass
+        if self.y > self.floor: 
+            move_y = (self.floor / (self.floor - self.y)) * self.speed
+            if self.y + move_y >= self.floor:
+                self.y += move_y
+            else:
+                self.y = self.floor
+                self.speed = 0
+            
 
 
-    pass
+
 
 def handle_events():
     global running
